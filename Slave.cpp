@@ -5,7 +5,7 @@ Slave::Slave(void)
 	this->Alias = -1;
 	this->Position = -1;
 	this->Rel_Pos = -1;
-	this->Master_Index = -1;
+	this->Slave_Index = -1;
 	this->DL_Status = -1;
 	this->Port_Descriptor = -1;
 	this->ECU_Error_Counter = 0;
@@ -48,10 +48,10 @@ void Slave::Get_Error_Counters(void)
 	int mask_first = 0xFF;	
 	int ret;
 
-	for (int i = 0; i < this->ports.size() && this->Get_Master_Index() != 7; i++)
+	for (int i = 0; i < this->ports.size() && this->Get_Slave_Index() != 7; i++)
 	{		
 		//Get invalid frame counter (first byte) and rx error counter (second byte)
-		iter = std::to_string(this->Master_Index);														
+		iter = std::to_string(this->Slave_Index);														
 		reg = std::to_string(ERR_OFFSET + (i*2));														
 		cmd = "L0=ecatregreadwrite(0,,1,,0,2);L0";													
 		cmd.insert(22, iter);

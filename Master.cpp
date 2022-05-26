@@ -74,8 +74,8 @@ void Master::init_slaves(void)
 
 			if(this->slaves[i].Get_Alias() == buffer_alias && this->slaves[i].Get_Rel_Pos())
 			{
-				slaves[i].Set_Master_Index(j);
-				char slave_it = this->slaves[i].Get_Master_Index() + ASCII_OFFSET;
+				slaves[i].Set_Slave_Index(j);
+				char slave_it = this->slaves[i].Get_Slave_Index() + ASCII_OFFSET;
 
 				//DL Status register
 				cmd = "L0=ecatregreadwrite(0,,1,$110,0,2);L0";
@@ -98,7 +98,7 @@ void Master::init_error_registers(void)
 {
 	for (int i = 0; i < this->slaves.size(); i++)
 	{		
-		char slave_it = this->slaves[i].Get_Master_Index() + ASCII_OFFSET;
+		char slave_it = this->slaves[i].Get_Slave_Index() + ASCII_OFFSET;
 		std::string cmd = "L0=ecatregreadwrite(0,,0,$100,0,2);L0";
 		cmd.insert(22, 1, slave_it);
 		int res = send_command(ppmaccomm, cmd);		
@@ -112,7 +112,7 @@ void Master::clear_error_registers(void)
 	
 	for (int i = 0; i < this->slaves.size(); i++)
 	{
-		char slave_it = this->slaves[i].Get_Master_Index() + ASCII_OFFSET;
+		char slave_it = this->slaves[i].Get_Slave_Index() + ASCII_OFFSET;
 
 		//Clear error register 0x0300 to 0x030B
 		cmd = "L0=ecatregreadwrite(0,,0,$300,0,1);L0";
@@ -205,7 +205,7 @@ void Master::print_ecat_data(void)
 	for (int i = 0; i < this->slaves.size(); i++)
 	{
 		printf("Slave[%d]: \n", i);
-		printf("Master index: %d\n", this->slaves[i].Get_Master_Index());
+		printf("Master index: %d\n", this->slaves[i].Get_Slave_Index());
 		printf("Alias: %d\n", this->slaves[i].Get_Alias());
 		printf("Poistion: %d\n", this->slaves[i].Get_Position());
 		printf("Comp pos: %d\n", this->slaves[i].Get_Rel_Pos());
@@ -250,7 +250,7 @@ bool Master::detect_ecat_fault(void) {
 	if (check == true) {
 		for (int i = 0; i < this->slaves.size(); i++) {
 			for (int j = 0; j < temp_master.slaves.size(); j++) {
-				if (this->slaves[i].Get_Master_Index() == temp_master.slaves[j].Get_Master_Index()) {
+				if (this->slaves[i].Get_Slave_Index() == temp_master.slaves[j].Get_Slave_Index()) {
 					printf("Get error counters from slave: %d\n", i);
 					this->slaves[i].Get_Error_Counters();					
 				}

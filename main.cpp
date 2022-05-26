@@ -191,7 +191,7 @@ void unit_test_1(void)
 
 			if (mymaster.slaves[i].Get_Alias() == buffer_alias && mymaster.slaves[i].Get_Rel_Pos() == buffer_position)
 			{
-				mymaster.slaves[i].Set_Master_Index(j);
+				mymaster.slaves[i].Set_Slave_Index(j);
 				mymaster.slaves[i].init_ports();
 				break;
 			}
@@ -201,7 +201,7 @@ void unit_test_1(void)
 	for (int i = 0; i < mymaster.slaves.size(); i++)
 	{
 		printf("Slave[%d]:\t\t\t\t\t \n", i);
-		printf("Master index:\t\t\t\t\t%d\n", mymaster.slaves[i].Get_Master_Index());
+		printf("Master index:\t\t\t\t\t%d\n", mymaster.slaves[i].Get_Slave_Index());
 		printf("Alias:\t\t\t\t\t\t%d\n", mymaster.slaves[i].Get_Alias());
 		printf("Position:\t\t\t\t\t%d\n", i);
 		printf("Relative pos:\t\t\t\t\t%d\n", mymaster.slaves[i].Get_Rel_Pos());
