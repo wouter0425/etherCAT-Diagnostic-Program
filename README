@@ -1,7 +1,5 @@
-powerPMAC_ssh
-=============
-
-A C++ library to communicate with the Delta Tau Power PMAC via SSH
-
-Documentation and installation instructions can be found in docs/PowerPMAC_CommsLibrary_Manual.pdf .
-Release notes can be found in RELEASE .
+An etherCAT diagnostic program for the omron PMAC etherCAT master
+-----------------------------------------------------------
+1.  Set the ecat_diagnostic_tool project as start-up project
+2.  Run in debug
+3.  Uncomment the unit tests in the main to run them
