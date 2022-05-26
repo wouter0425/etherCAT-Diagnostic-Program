@@ -1,0 +1,21 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (ecat_test.vcxproj, libPowerPMACcontrol_Shared.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+c:\users\woute\pictures\powerpmac_ssh-master\powerpmaccontrol.h(367): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: see declaration of 'sprintf'
+c:\users\woute\pictures\powerpmac_ssh-master\powerpmaccontrol.h(371): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: see declaration of 'sprintf'
+c:\users\woute\pictures\powerpmac_ssh-master\powerpmaccontrol.h(375): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: see declaration of 'sprintf'
+c:\users\woute\pictures\powerpmac_ssh-master\powerpmaccontrol.h(379): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: see declaration of 'sprintf'
+c:\users\woute\pictures\powerpmac_ssh-master\powerpmaccontrol.h(383): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: see declaration of 'sprintf'
+c:\users\woute\pictures\powerpmac_ssh-master\powerpmaccontrol.h(387): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: see declaration of 'sprintf'
+c:\users\woute\pictures\powerpmac_ssh-master\main.cpp(185): warning C4018: '<': signed/unsigned mismatch
+c:\users\woute\pictures\powerpmac_ssh-master\main.cpp(201): warning C4018: '<': signed/unsigned mismatch
+c:\users\woute\pictures\powerpmac_ssh-master\main.cpp(209): warning C4018: '<': signed/unsigned mismatch
+c:\users\woute\pictures\powerpmac_ssh-master\main.cpp(291): warning C4018: '<': signed/unsigned mismatch
+c:\users\woute\pictures\powerpmac_ssh-master\main.cpp(294): warning C4018: '<': signed/unsigned mismatch
+c:\users\woute\pictures\powerpmac_ssh-master\main.cpp(303): warning C4018: '<': signed/unsigned mismatch
+  ecat_test.vcxproj -> C:\Users\woute\Pictures\powerPMAC_ssh-master\msvc\10.0\..\..\bin\msvc-10.0\ecat_diagnostic_tool.exe
