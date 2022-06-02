@@ -6,14 +6,16 @@
 #include <string>
 
 typedef struct Link {
-	int s;
-	int p;
+	int s;									//Slave
+	int p;									//Port
 }Link;
 
 class Port {
 private:
-	//Name									//ESC Register
 	int Nr;
+	Link link;
+
+	//Name									ESC Register
 	bool Loop;								//0x0110:0x0111
 	bool Physical_Link;						//0x0110:0x0111
 	bool Communication;						//0x0110:0x0111
@@ -25,8 +27,7 @@ private:
 public:
 	Port(void);
 	Port(int x);
-	~Port();
-	Link link;	
+	~Port();	
 
 	int Get_Nr(void) { return this->Nr; }
 	bool Get_Loop(void) { return this->Loop; }

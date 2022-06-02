@@ -10,10 +10,10 @@
 #include <fstream>
 
 using namespace PowerPMACcontrol_ns;
-//using namespace std;
 extern PowerPMACcontrol *ppmaccomm;
 extern HANDLE hConsole;
 
+//Struct for connecting to the pmac
 typedef struct _con_ {
 	std::string u_ipaddr;
 	std::string u_user;
@@ -24,13 +24,8 @@ typedef struct _con_ {
 
 int send_command(PowerPMACcontrol* ppmaccomm, std::string cmd);
 void connect_pmac(PowerPMACcontrol *ppmaccomm, con mycon);
-void read_slaves(PowerPMACcontrol *ppmaccomm);
-void ecat_state(PowerPMACcontrol *ppmaccomm, bool state);
 void ecat_reset(PowerPMACcontrol *ppmaccomm);
-void clear_screan(void);
 
-//int test = send_command(ppmaccomm, "ECAT[0].SlaveCount");
-//cout << test << endl;
-#endif // !SSH_FUNC_H
+#endif 
 
 

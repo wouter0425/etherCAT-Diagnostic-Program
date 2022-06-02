@@ -40,7 +40,7 @@ void Slave::init_ports(void)
 	}
 }
 
-void Slave::Get_Error_Counters(void)
+void Slave::Get_Error_Registers(void)
 {
 	std::string cmd = "";
 	std::string iter = "";

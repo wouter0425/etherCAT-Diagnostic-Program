@@ -29,7 +29,7 @@ public:
 	void clear_error_registers(void);
 	void map_topology(int id, int& next_id);		
 	void print_ecat_data(void);
-	bool detect_ecat_fault(void);
+	bool detect_ecat_error(void);
 	void locate_ecat_error(void);
 };
 

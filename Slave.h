@@ -27,7 +27,7 @@ public:
 	vector<int> iterator;
 	
 	void init_ports(void);
-	void Get_Error_Counters(void);
+	void Get_Error_Registers(void);
 	
 	Slave(void);
 	~Slave();
