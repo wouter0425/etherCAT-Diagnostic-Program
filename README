@@ -2,4 +2,4 @@ An etherCAT diagnostic program for the omron PMAC etherCAT master
 -----------------------------------------------------------
 1.  Set the ecat_diagnostic_tool project as start-up project
 2.  Run in release mode
-3.  Uncomment the unit tests in the main to run them
+3.  Uncomment the validation tests in the main to run them
