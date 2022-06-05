@@ -15,6 +15,7 @@ Slave::~Slave() {};
 
 void Slave::init_ports(void)
 {	
+	//Add port with their port number
 	for (int i = 0; i < 4; i++)
 	{
 		if ((this->Get_Port_Descriptor() >> (i * 2)) & 3 != 0)

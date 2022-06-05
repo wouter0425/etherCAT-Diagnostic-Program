@@ -171,8 +171,8 @@ void Master::map_topology(int id, int& next_id)
 	}
 
 	//Add port 0 of the current slave to the datapath
-	Link node = { id, 0 };
-	this->data_path.push_back(node);
+	Link node = { id, 0 };	
+	this->set_data_path(node);
 
 	for (int i = 1; i < this->slaves[id].iterator.size(); i++) {
 		if (this->slaves[id].ports[this->slaves[id].iterator[i]].Get_Communication() == true) {					
@@ -194,7 +194,7 @@ void Master::map_topology(int id, int& next_id)
 			this->map_topology(next_id, next_id);			
 			
 			//Add the previous slave port when the slave is not connected to another slave
-			this->data_path.push_back(this->slaves[temp].ports[0].Get_Link());
+			this->set_data_path(this->slaves[temp].ports[0].Get_Link());
 		}
 		else if (this->slaves[id].ports[this->slaves[id].iterator[i]].Get_Communication() == false) {
 			//Set link to s = -1 and p = -1 for slaves that are not connected to another slave

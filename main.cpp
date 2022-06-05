@@ -15,9 +15,8 @@ void validation_test_2(void);
 int main(int argc, char *argv[])
 {		
 	//validation tests, uncomment rest of main to use
-	validation_test_1();
-	validation_test_2();	
-	
+	//validation_test_1();
+	//validation_test_2();		
 	
 	//Setup the SSH connection parameters		
 	argParser args(argc, argv);
