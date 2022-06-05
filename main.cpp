@@ -15,8 +15,8 @@ void validation_test_2(void);
 int main(int argc, char *argv[])
 {		
 	//validation tests, uncomment rest of main to use
-	//validation_test_1();
-	//validation_test_2();	
+	validation_test_1();
+	validation_test_2();	
 	
 	
 	//Setup the SSH connection parameters		
@@ -309,11 +309,10 @@ void validation_test_2(void)
 	}
 	printf("\n------------------------------------------------\n");
 	
-	for (int i = 0; i < mymaster.data_path.size(); i++) {
-		int s = mymaster.data_path[i].s;
-		int p = mymaster.data_path[i].p;
+	for (int i = 0; i < mymaster.get_path_size(); i++) {
+		Link temp_link = mymaster.get_data_path(i);
 
-		printf("(%d, %d)\t", mymaster.data_path[i].s, mymaster.data_path[i].p);
+		printf("(%d, %d)\t", temp_link.s, temp_link.p);
 		printf("%d\n", i);
 	}
 }

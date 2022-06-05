@@ -230,12 +230,13 @@ void Master::print_ecat_data(void)
 		printf("------------------------------------------------------------\n");
 	}
 
-	for (int i = 0; i < this->data_path.size(); i++) {
+	for (int i = 0; i < this->get_path_size(); i++) {
+		Link temp_link = this->get_data_path(i);
 		int s = this->data_path[i].s;
 		int p = this->data_path[i].p;
 
-		printf("(%d, %d)\t", this->data_path[i].s, this->data_path[i].p);
-		printf("%d\n", this->slaves[this->data_path[i].s].ports[this->data_path[i].p].Get_Nr());
+		printf("(%d, %d)\t", temp_link.s, temp_link.p);
+		printf("%d\n", i);
 	}
 	return;
 }
@@ -281,17 +282,20 @@ bool Master::detect_ecat_error(void) {
 
 void Master::locate_ecat_error(void) {
 	//Port error indicators
-	for (int i = 0; i < this->data_path.size(); i++)
+	for (int i = 0; i < this->get_path_size(); i++)
 	{
-		int s = this->data_path[i].s;
-		int p = this->data_path[i].p;
-		printf("\nError detection at slave %d on port %d:\n", s, p);
-		if (this->slaves[s].ports[p].Get_Physical_Error_Counter() > 0 || this->slaves[s].ports[p].Get_RX_Error_counter() > 0 || this->slaves[s].ports[p].Get_Forwarded_Error_Counter() > 0 || this->slaves[s].ports[p].Get_Lost_Link_Counter() > 0 || this->slaves[s].ports[p].Get_Forwarded_Error_Counter() > 0)
+		Link temp_link = this->get_data_path(i);	
+		printf("\nError detection at slave %d on port %d:\n", temp_link.s, temp_link.p);
+		if (this->slaves[temp_link.s].ports[temp_link.p].Get_Physical_Error_Counter() > 0 ||
+			this->slaves[temp_link.s].ports[temp_link.p].Get_RX_Error_counter() > 0 ||
+			this->slaves[temp_link.s].ports[temp_link.p].Get_Forwarded_Error_Counter() > 0 ||
+			this->slaves[temp_link.s].ports[temp_link.p].Get_Lost_Link_Counter() > 0 ||
+			this->slaves[temp_link.s].ports[temp_link.p].Get_Forwarded_Error_Counter() > 0)
 		{
-			printf("Lost link counter:\t\t\t %d\n", this->slaves[s].ports[p].Get_Lost_Link_Counter());
-			printf("Frame error(s):\t\t\t\t %d\n", this->slaves[s].ports[p].Get_RX_Error_counter());
-			printf("Physical  error(s):\t\t\t %d\n", this->slaves[s].ports[p].Get_Physical_Error_Counter());
-			printf("frames previously declared corrupt:\t %d\n\n", this->slaves[s].ports[p].Get_Forwarded_Error_Counter());
+			printf("Lost link counter:\t\t\t %d\n", this->slaves[temp_link.s].ports[temp_link.p].Get_Lost_Link_Counter());
+			printf("Frame error(s):\t\t\t\t %d\n", this->slaves[temp_link.s].ports[temp_link.p].Get_RX_Error_counter());
+			printf("Physical  error(s):\t\t\t %d\n", this->slaves[temp_link.s].ports[temp_link.p].Get_Physical_Error_Counter());
+			printf("frames previously declared corrupt:\t %d\n\n", this->slaves[temp_link.s].ports[temp_link.p].Get_Forwarded_Error_Counter());
 		}
 		else {
 			printf("\tNo error detected\n");

@@ -13,16 +13,20 @@
 class Master {
 private:
 	int SlaveCount;
+	vector<Link> data_path;
 
 public:
 	Master(void);
-	~Master();
+	~Master();	
 	
-	vector<Link> data_path;
 	vector<Slave> slaves;	
 
 	int get_slavecount(void) { return this->SlaveCount; }	
+	Link get_data_path(int x) { return this->data_path[x]; }
+	int get_path_size(void) { return this->data_path.size(); }
+	
 	void set_slavecount(int x) { this->SlaveCount = x; }
+	void set_data_path(Link x) { this->data_path.push_back(x); }
 	
 	void init_slaves(void);	
 	void init_error_registers(void);

@@ -52,17 +52,17 @@ void Slave::Get_Error_Registers(void)
 	{		
 		//Get invalid frame counter (first byte) and rx error counter (second byte)
 		iter = std::to_string(this->Slave_Index);														
-		reg = std::to_string(ERR_OFFSET + (this.slaves[i].Get_Nr()*2));														
+		reg = std::to_string(ERR_OFFSET + (this->ports[i].Get_Nr()*2));														
 		cmd = "L0=ecatregreadwrite(0,,1,,0,2);L0";													
 		cmd.insert(22, iter);
 		cmd.insert(26, reg);
 		ret = send_command(ppmaccomm, cmd);
 		this->ports[i].Set_Frame_Error_Counter(ret & mask_first);									
-		ret = ret >> 8;																				
+		ret = ret >> 8;																			
 		this->ports[i].Set_RX_Error_Counter(ret & mask_first);										
 		
 		//Get the forwarded RX error counter
-		reg = std::to_string(ERR_OFFSET + this.slaves[i].Get_Nr() + 8);													
+		reg = std::to_string(ERR_OFFSET + (this->ports[i].Get_Nr() + 8));
 		cmd = "L0=ecatregreadwrite(0,,1,,0,2);L0";													
 		cmd.insert(22, iter);
 		cmd.insert(26, reg);
@@ -70,19 +70,18 @@ void Slave::Get_Error_Registers(void)
 		this->ports[i].Set_Frame_Error_Counter(ret);									
 
 		//Get the lost link counter
-		reg = std::to_string(ERR_OFFSET + this.slaves[i].Get_Nr() + 16);													
+		reg = std::to_string(ERR_OFFSET + (this->ports[i].Get_Nr() + 16));
 		cmd = "L0=ecatregreadwrite(0,,1,,0,2);L0";													
 		cmd.insert(22, iter);
 		cmd.insert(26, reg);
 		ret = send_command(ppmaccomm, cmd);
-		this->ports[i].Set_Lost_Link_Counter(ret);
-
-		//Get the ECU error counter
-		reg = std::to_string(ERR_OFFSET + 12);
-		cmd = "L0=ecatregreadwrite(0,,1,,0,1);L0";
-		cmd.insert(22, iter);
-		cmd.insert(26, reg);
-		ret = send_command(ppmaccomm, cmd);
-		this->Set_ECU_Error_Counter(ret);
+		this->ports[i].Set_Lost_Link_Counter(ret);		
 	}	
+	//Get the ECU error counter
+	reg = std::to_string(ERR_OFFSET + 12);
+	cmd = "L0=ecatregreadwrite(0,,1,,0,1);L0";
+	cmd.insert(22, iter);
+	cmd.insert(26, reg);
+	ret = send_command(ppmaccomm, cmd);
+	this->Set_ECU_Error_Counter(ret);
 }
